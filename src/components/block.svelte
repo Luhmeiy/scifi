@@ -1,19 +1,31 @@
 <script lang="ts">
-	import Info from './info.svelte';
+	import type { Location } from '../interfaces/location';
 
-	let isOpen = $state(false);
+	let { location, openId = $bindable() }: { location?: Location; openId?: string } = $props();
 
-	const toggleOpen = () => (isOpen = !isOpen);
+	let isOpen = $derived(location && location.id === openId);
+
+	const toggleOpen = () => (isOpen ? (openId = undefined) : (openId = location?.id));
+
+	const getIcon = () => {
+		switch (location?.type) {
+			case 'star':
+				return '*';
+			case 'planet':
+				return '@';
+			case 'station':
+				return '#';
+		}
+	};
 </script>
 
 <button
-	class="h-6 w-6 duration-200 hover:border-2"
+	class="h-8 w-8 duration-200 hover:border-2"
+	class:cursor-pointer={location}
 	class:border-2={isOpen}
 	class:border-red-500={isOpen}
 	onclick={toggleOpen}
 	aria-label="block"
-></button>
-
-{#if isOpen}
-	<Info {toggleOpen} />
-{/if}
+>
+	<span class:animate-pulse={location?.type == 'star'}>{getIcon()}</span>
+</button>
