@@ -20,7 +20,7 @@
 </script>
 
 <button
-	class="h-8 w-8 duration-200 hover:border-2"
+	class="h-8 w-8 border border-zinc-900 duration-200 hover:border-2 hover:border-white"
 	class:cursor-pointer={location}
 	class:border-2={isOpen}
 	class:border-red-500={isOpen}

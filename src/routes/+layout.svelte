@@ -11,7 +11,9 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="flex min-h-dvh flex-col gap-3 bg-zinc-950 p-3 text-zinc-100 transition-all">
+<div
+	class="flex min-h-dvh w-fit min-w-dvw flex-col gap-3 bg-zinc-950 p-3 text-zinc-100 transition-all"
+>
 	<Navbar />
 
 	{@render children()}
