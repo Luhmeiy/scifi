@@ -2,6 +2,7 @@
 	import './layout.css';
 	import favicon from '#lib/assets/favicon.svg';
 	import type { LayoutProps } from './$types';
+	import Navbar from '../components/navbar.svelte';
 
 	let { children }: LayoutProps = $props();
 </script>
@@ -10,6 +11,8 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="min-h-dvh bg-zinc-950 text-zinc-100 transition-all">
+<div class="flex min-h-dvh flex-col gap-3 bg-zinc-950 p-3 text-zinc-100 transition-all">
+	<Navbar />
+
 	{@render children()}
 </div>
