@@ -5,7 +5,11 @@
 
 	let isOpen = $derived(location && location.id === openId);
 
-	const toggleOpen = () => (isOpen ? (openId = undefined) : (openId = location?.id));
+	const toggleOpen = () => {
+		console.log(isOpen);
+		console.log(openId === location?.id);
+		return isOpen ? (openId = undefined) : (openId = location?.id);
+	};
 
 	const getIcon = () => {
 		switch (location?.type) {
@@ -22,8 +26,8 @@
 <button
 	class="h-8 w-8 border border-zinc-900 duration-200 hover:border-2 hover:border-white"
 	class:cursor-pointer={location}
-	class:border-2={isOpen}
-	class:border-red-500={isOpen}
+	class:border-2!={isOpen}
+	class:border-red-500!={isOpen}
 	onclick={toggleOpen}
 	aria-label="block"
 >
