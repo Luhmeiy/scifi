@@ -18,7 +18,7 @@
 	);
 </script>
 
-<div class="flex flex-1 border-2">
+<div class="flex border-2">
 	<div class="flex flex-col">
 		<div class="h-10 w-10"></div>
 

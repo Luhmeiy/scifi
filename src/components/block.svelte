@@ -5,11 +5,7 @@
 
 	let isOpen = $derived(location && location.id === openId);
 
-	const toggleOpen = () => {
-		console.log(isOpen);
-		console.log(openId === location?.id);
-		return isOpen ? (openId = undefined) : (openId = location?.id);
-	};
+	const toggleOpen = () => (isOpen ? (openId = undefined) : (openId = location?.id));
 
 	const getIcon = () => {
 		switch (location?.type) {

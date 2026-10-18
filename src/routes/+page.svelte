@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { generateGalaxy } from '#lib/generate.ts';
+	import { sidebarOpen } from '#lib/sidebar.ts';
 	import Info from '../components/info.svelte';
 	import Map from '../components/map.svelte';
 
@@ -8,8 +9,10 @@
 	let openId = $state<string | undefined>(undefined);
 </script>
 
-<Map {map} {locations} bind:openId />
+<div class="flex flex-1 gap-3">
+	<Map {map} {locations} bind:openId />
 
-{#if openId}
-	<Info location={locations.find((l) => l.id === openId)!} onClose={() => (openId = undefined)} />
-{/if}
+	{#if $sidebarOpen}
+		<Info location={locations.find((l) => l.id === openId)!} />
+	{/if}
+</div>
