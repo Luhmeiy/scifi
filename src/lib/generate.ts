@@ -1,7 +1,8 @@
+import type { Galaxy } from '../interfaces/galaxy';
 import type { Location } from '../interfaces/location';
-import type { Map } from '../interfaces/map';
+import type { IMap } from '../interfaces/map';
 
-const generateMap = (): Map => {
+const generateMap = (): IMap => {
 	const max = 30;
 	const min = 15;
 
@@ -24,7 +25,7 @@ const generateLocation = (x: number, y: number): Location => {
 	};
 };
 
-export const generateGalaxy = (): { map: Map; locations: Location[] } => {
+export const generateGalaxy = (): Galaxy => {
 	const map = generateMap();
 	const mapSize = map.height * map.width;
 
