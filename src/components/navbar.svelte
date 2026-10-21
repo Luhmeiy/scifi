@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { regenerateGalaxy } from '#lib/galaxy.ts';
 	import { sidebarOpen } from '#lib/sidebar.ts';
 	import NavbarButton from './navbarButton.svelte';
 
-	const newMap = () => console.log('New map');
+	const newMap = () => regenerateGalaxy();
 	const save = () => console.log('Save');
 	const load = () => console.log('Load');
 	const toggleSidebar = () => sidebarOpen.update((v) => !v);
