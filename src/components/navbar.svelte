@@ -33,6 +33,15 @@
 	};
 
 	const onKeyDown = (e: KeyboardEvent) => {
+		const target = e.target as HTMLElement | null;
+		if (
+			target instanceof HTMLInputElement ||
+			target instanceof HTMLTextAreaElement ||
+			target?.isContentEditable
+		) {
+			return;
+		}
+
 		switch (e.key) {
 			case 'n':
 				newMap();
@@ -43,7 +52,7 @@
 			case 'l':
 				load();
 				break;
-			case 'e':
+			case 't':
 				toggleSidebar();
 				break;
 		}
@@ -61,7 +70,7 @@
 	<NavbarButton title="[N] New map" onClick={newMap} />
 	<NavbarButton title="[S] Save" onClick={save} />
 	<NavbarButton title="[L] Load" onClick={load} />
-	<NavbarButton title="[E] Toggle sidebar" onClick={toggleSidebar} />
+	<NavbarButton title="[T] Toggle sidebar" onClick={toggleSidebar} />
 </nav>
 
 <svelte:window on:keydown={onKeyDown} />

@@ -1,5 +1,5 @@
 import type { Galaxy } from '../interfaces/galaxy';
-import type { Location } from '../interfaces/location';
+import { LOCATION_TYPES, type Location } from '../interfaces/location';
 import type { IMap } from '../interfaces/map';
 
 const generateMap = (): IMap => {
@@ -13,8 +13,7 @@ const generateMap = (): IMap => {
 };
 
 const generateLocation = (x: number, y: number): Location => {
-	const types = ['star', 'planet', 'station'];
-	const randomType = types[Math.floor(Math.random() * types.length)] as Location['type'];
+	const randomType = LOCATION_TYPES[Math.floor(Math.random() * LOCATION_TYPES.length)];
 
 	return {
 		id: crypto.randomUUID(),
